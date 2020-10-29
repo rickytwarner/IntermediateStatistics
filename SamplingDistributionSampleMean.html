@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Sampling Distribution of the Sample Mean</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Math 325 Notebook</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Table of Contents</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Describing Data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="GraphicalSummaries.html">Graphical Summaries</a>
+    </li>
+    <li>
+      <a href="NumericalSummaries.html">Numerical Summaries</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Making Inference
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="MakingInference.html">Making Inference</a>
+    </li>
+    <li>
+      <a href="tTests.html">T-tests boiiiiiiiii</a>
+    </li>
+    <li>
+      <a href="WilcoxonTests.html">Wilcoxon Tests</a>
+    </li>
+    <li>
+      <a href="ANOVA.html">ANOVA</a>
+    </li>
+    <li>
+      <a href="Kruskal.html">Kruskal-Wallis</a>
+    </li>
+    <li>
+      <a href="LinearRegression.html">Linear Regression</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    R Help
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="RCommands.html">R Commands</a>
+    </li>
+    <li>
+      <a href="RMarkdownHints.html">R Markdown Hints</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Analyses
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./Analyses/AnalysisRubric.html">Analysis Rubric</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousing.html">Good Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousingPOOR.html">Poor Example Analysis</a>
+    </li>
+    <li>
+      <a href="./Analyses/StudentHousingII.html">My First Analysis</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Extra Resources
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="cheat_sheet.html">Extra Links</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Sampling Distribution of the Sample Mean</h1>
+
+</div>
+
+
+<p>It is often the case that we can assume that data comes from a normal distribution. Heights of people, plants, or animals are typically normally distributed. The distribution of the lengths of pregnancies (gestational periods) are normally distributed for most species. For humans the average pregnancy is roughly “9 months,” or more specifically, 266 days. Measurement errors are often normally distributed. For example if a person was to be weighed on a scale 30 different times, the measurements of their weight would probably not always be the same, especially if the scale was accurate enough. Despite being different, most measurements would likely not differ too dramatically from each other. Some would be a little higher and some a little lower, but the majority of the data would likely be close to the center. This is what it means when data is normally distributed, that most of it is close to the mean, some a little higher and some a little lower.</p>
+<p><br /></p>
+<div id="an-example" class="section level5">
+<h5>An Example</h5>
+<p>To view a specific case, consider the following histogram of Major League Baseball batting averages (from 2009) which can be assumed to be normally distributed with a mean of <span class="math inline">\(\mu = 0.2612\)</span> and a standard deviation of <span class="math inline">\(\sigma=0.0339\)</span>. There are two important elements to the histogram, which is overlaid with a normal density curve, that is shown below. First, the <em>distribution</em> of the actual data is shown by the histogram. This is what actually occurred. It is real and unarguable. Second, the normal density curve that is overlaid on this histogram is a mathematical (theoretical) function that does a pretty good job of summarizing, or generalizing, the distribution of the data. It is theoretical and therefore arguable. No one actually knows if batting averages are normally distributed or not. However, the approximation of the normal curve to the histogram looks very reasonable, so we go ahead and “claim” that batting averages are normally distributed.</p>
+<p><img src="SamplingDistributionSampleMean_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
+<div id="normalprop" class="section level5">
+<h5>Properties of the Normal Distribution</h5>
+<p>The reason we often “claim” that data is normally distributed is to apply the powerful properties of the mathematical function known as the normal density curve, or normal distribution. The mathematical formula that describes this function was uncovered by many early mathematicians, but Carl Friedrich Gauss published it in 1809 and therefore is usually given credit for its discovery. The function, which is perhaps a little intimidating at first, is given by <span class="math display">\[
+  f(x |\mu,\sigma) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+\]</span> Familiarity with all the symbols should make this function less intimidating. The two <em>parameters</em> of this mathematical function are denoted by the Greek letters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. The symbol <span class="math inline">\(\pi\)</span> is the Greek letter “pi” and is the famous constant, 3.14159… <span class="math inline">\(e\)</span> is also a famous constant occurring in nature and is given by 2.71828…. How amazing is that to have <span class="math inline">\(\pi\)</span> and <span class="math inline">\(e\)</span> in the same formula! Finally, <span class="math inline">\(x\)</span> is the value of <span class="math inline">\(x\)</span> along the x-axis and goes from negative infinity <span class="math inline">\((-\infty)\)</span> to positive infinity <span class="math inline">\((\infty)\)</span>. The answer of the right side after everything is filled in and calculated out is the height of the normal curve. The higher the normal curve above a certain value of <span class="math inline">\(x\)</span>, the more likely that value of <span class="math inline">\(x\)</span> is to happen.</p>
+<p>Notice how the parameter <span class="math inline">\(\mu\)</span> controls the center of this distribution while the parameter <span class="math inline">\(\sigma\)</span> controls how spread out the distribution is. When <span class="math inline">\(\sigma\)</span> is larger, the resulting normal curve is flatter and more spread out (i.e., the data is more variable). When <span class="math inline">\(\sigma\)</span> is smaller, the resulting normal curve is taller and less spread out (i.e., the data is less variable). In any case, the most likely values of <span class="math inline">\(x\)</span> to occur are those that are close to <span class="math inline">\(\mu\)</span>. This is seen by noting that for any normal curve, it is tallest around its mean.</p>
+<p><img src="SamplingDistributionSampleMean_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The above plot and discussion demonstrates that just two parameters completely describe the normal distribution, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. What is even more powerful about the normal distribution is that any normal distribution can be re-scaled to the <em>standard normal distribution</em> by using the following formula <span class="math display">\[
+  Z = \frac{X-\mu}{\sigma}
+\]</span> Thus, whatever the mean <span class="math inline">\((\mu)\)</span> and standard deviation <span class="math inline">\((\sigma)\)</span> of a certain normal distribution, we can transform it to the <em>standard normal distribution</em> which looks like this</p>
+<p><img src="SamplingDistributionSampleMean_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The reason we would do this is because the standard normal distribution has the following property, roughly 68% of the data is within 1 standard deviation of the mean; roughly 95% of the data occurs within 2 standard deviations of the mean; and roughly 99.7% of the data occurs within 3 standard deviations of the mean. Thus, by 3 standard deviations, 997 of every 1,000 data points will have occurred. That means that fewer than 3 observations for every 1,000 will be more than three standard deviations from the mean if the data is truly normally distributed. This is shown graphically in the following plot.</p>
+<p><img src="SamplingDistributionSampleMean_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Further, the probability of any region of the normal density function can be obtained by calculating the area under the curve for a specific range of <span class="math inline">\(x\)</span>-values of interest.</p>
+</div>
+<div id="an-example-1" class="section level5">
+<h5>An Example</h5>
+<p>Continuing with the previous example of batting averages, the probability that a randomly selected MLB player from 2009 has a batting average higher than 0.300 would be given by the shaded region in the plot below, which is 0.1262 (or 12.62%). In comparison, if we were to calculate the probability using our actual sample data, we would find that 0.1345 (or 13.45%) of the sample data was greater than or equal to 0.300. Thus the normal curve is a useful approximation to the actual sample data, but more importantly allows a generalization of the data to the full population. The question of interest thus becomes, how can the normal distribution be used to effectively make conclusions about the population based on the information provided by the sample?</p>
+<p><img src="SamplingDistributionSampleMean_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="samplemeandist" class="section level5">
+<h5>The Sampling Distribution of the Sample Mean</h5>
+<p>One of the most powerful results in statistics is the conclusion that the theoretical distribution of all possible sample means, the <em>sampling distribution of the sample mean</em>, is <strong>normal</strong> under two important scenarios!</p>
+<ol style="list-style-type: decimal">
+<li><p>If the parent population data is normal, then the sampling distribution of the sample mean will be normal.</p></li>
+<li><p>If the sample size is large enough, then the sampling distribution of the sample mean will be (at least approximately) normal.</p></li>
+</ol>
+<p>If either of these above conditions is satisfied, then it follows that the distribution of the sample mean <span class="math inline">\((\bar{X})\)</span> will be (at least approximately) normally distributed. Let’s explore what this means more specifically.</p>
+<p>Here at BYU-Idaho there are roughly 7,500 male students (<a href="http://www2.byui.edu/IR/stats/index.htm">click here</a> to see the actual data). If a random sample of size <span class="math inline">\(n=50\)</span> male students is taken from the population of 7,500 individuals, how many different samples are possible? It turns out that the number that describes how many possible samples of size <span class="math inline">\(n=50\)</span> can be taken from a population of 7,500 students has 130 digits in it! (The actual number is roughly 1.580873e+129.) This might be described as “a lot” of possible samples. For reference, note that the number “one million” has just 7 digits in it: 1,000,000 or 1.0e+6. Certainly it is <em>possible</em> that the sample gives us the 50 tallest males at BYU-Idaho. It is also <em>possible</em> that the sample consists of the shortest 50 males at BYU-Idaho. However, the fantastic result is that for the most part, most sample means will be “close” to the true population mean, with some being a little higher, and some being a little lower. In other words, the distribution of all theoretically possible sample means is <em>normal</em>.</p>
+</div>
+<div id="an-example-2" class="section level5">
+<h5>An Example</h5>
+<p>To see this more clearly, let’s return to our batting averages example. As we saw previously, batting averages can be assumed to be normally distributed with a mean of 0.2612 and a standard deviation of 0.0339. To reach this conclusion we essentially looked at the data for the entire population. It would be nice if we could have reached this conclusion (or a nearly identical conclusion) using just a sample of say <span class="math inline">\(n=20\)</span> batting averages. For the batting averages data, the population consists of 446 individual batting averages. It turns out that there are 2.587035e+34 possible samples of size 20 that could be obtained from a population of 446 individuals. That is a lot of possible samples. Let’s compute the sample mean for a few of these, say for 1,000 of the possible samples. The distribution of the 1,000 resulting sample means are plotted over top of the histogram for the actual batting average data. Notice that this new histogram is centered around the original value of <span class="math inline">\(\mu=0.2612\)</span>. In fact, the mean of the 1,000 sample means comes out to be <span class="math inline">\(\mu_{\bar{x}} = 0.26135\)</span>, which is very close to the actual mean <span class="math inline">\(\mu=0.2612\)</span>. If we do the same thing for 10,000 random samples, then <span class="math inline">\(\mu_{\bar{x}} = 0.26126\)</span> and if we do it again for 20,000 samples we get <span class="math inline">\(\mu_{\bar{x}}=0.26123\)</span>. Notice that the larger the sample size gets, the closer that the mean of the sample means gets to the actual population mean. (Try saying that phrase out loud.) Thus we could say that “the mean of the means is the mean.”</p>
+<p><img src="SamplingDistributionSampleMean_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>The conclusion of the above discussion is that if we took a single random sample of <span class="math inline">\(n=20\)</span> batting averages from the population of all batting averages, we would have ended up with an <span class="math inline">\(\bar{x}\)</span> ranging anywhere from somewhere around 0.2406 to 0.2840. However, more likely than not, the value would have been something closer to the true value of <span class="math inline">\(\mu=0.2612\)</span> than either of those numbers because the sample means are normally distributed around the population (true) mean.</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

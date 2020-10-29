@@ -1,0 +1,130 @@
+View---
+title: "Student Housing Costs"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+    toc: true
+    toc_float: true
+---
+
+```{r, include=FALSE, message = F, warning = F, include = FALSE}
+library(memisc)
+library(mosaic)
+library(DT) # If you get an error stating: 
+            # Error in library(DT): there is no package called 'DT'
+            # You will need to run: install.packages("DT") 
+            # in your Console, then try "Knit HTML" again.
+Rent <- read.csv("/Users/ricky/Desktop/statistics/Data/Rent.csv", header=TRUE)
+```
+
+<br />
+
+## Background
+
+Stephanie[^1] is a student that will be starting school at BYU-Idaho next semester. Here is a copy of the email request for information that she sent.
+
+"Hi. My name is Stephanie. I would like to learn about what housing options I have for living at BYU-Idaho next semester. It will be my first semester there, so I would like to find something that is close to campus and around $300 a month in rent. I'm not too picky on roomates, but I would like somewhere that has a lot of people around so I can get to know as many people as possible. Thanks in advance!"
+
+Use the data from the [BYU-Idaho Housing Website](https://web.byui.edu/tis/search) to prepare an Analysis that will answer Stephanie's questions and give her some recommendations on a few apartments that best meet her criterions above. However, also be sure to demonstrate all of her options to her.
+
+For your convenience, the first three observations of a dataset pulled from the BYUI website are shown in the following table. There are a total of `r nrow(Rent)` observations in the dataset.
+
+<!-- Hint, you should probably subset the Rent dataset to only show the "Approved Women's Housing" since Stephanie won't be interested in Male Housing options. Also, you can edit this background however you wish when completing your analysis. Notice how this text in green doesn't show up in the HTML output because we used the HTML comment tags around this text. --> 
+
+```{r}
+datatable(Rent, options=list(lengthMenu = c(3,10,30)))
+```
+
+
+## Analysis
+## Student Housing Costs
+
+In response to Stephanie's freshman dilemma, "Which apartment complex is the best apartment that is only $300 a month, close to campus, and has an active social life?", the following research has been proposed. All student housing (that is approved for women) has had it's price, location, and amount of people analyzed to see which option would be the best for Stephanie.
+
+My hypothesis is that the best apartment that fits her qualificatinos is Snow View Apartments. I believe it falls in the $300 a month price range, is really close to campus, and has quite a few people.
+
+
+```{r, echo = FALSE, include=FALSE, message = F, warning = F, include = FALSE}
+
+library('sqldf')
+Rent = read.csv('/Users/ricky/Desktop/statistics/Data/Rent.csv')
+monthly_cost <- Rent$Cost / 3
+apartment <- Rent$Apartment
+gender <- Rent$Gender
+costpermonth <- data.frame(apartment, monthly_cost, gender)
+newdata <- sqldf('select apartment, monthly_cost from costpermonth where gender = "F" order by monthly_cost asc')
+final <- sqldf('select * from newdata where monthly_cost != "NA"')
+final
+hist(newdata$monthly_cost ,main = "Monthly Costs for Women's Housing in Rexburg ", xlab="Price Range", ylab="Number of Apartments in Range", col = 'steelblue')
+```
+
+
+#Location analysis 
+```{r, echo = FALSE}
+library('sqldf')
+Rent = read.csv('/Users/ricky/Desktop/statistics/Data/Rent.csv')
+distance <- Rent$Miles2Campus
+apartment <- Rent$Apartment
+gender <- Rent$Gender
+costpermonth <- data.frame(apartment, distance, gender)
+newdata <- sqldf('select apartment, distance from costpermonth where gender = "F" and distance is not null order by distance asc')
+newdata
+hist(newdata$distance,main = "Distance to Campus in Miles ", xlab="Miles", ylab="Number of Apartments in Range", col = 'yellow')
+```
+
+#Number of Residents
+```{r, echo = FALSE}
+library('sqldf')
+Rent = read.csv('/Users/ricky/Desktop/statistics/Data/Rent.csv')
+residents <- Rent$Residents
+apartment <- Rent$Apartment
+gender <- Rent$Gender
+costpermonth <- data.frame(apartment, residents, gender)
+newdata <- sqldf('select apartment, residents from costpermonth where gender = "F" order by residents desc')
+newdata
+hist(newdata$residents ,main = "Number of Tennants in Apartment Complex", xlab="Total Tennants", ylab="Number of Apartments in Range", col = 'firebrick')
+```
+
+#Best Options for Stephanie
+```{r, echo = FALSE}
+library('sqldf')
+Rent = read.csv('/Users/ricky/Desktop/statistics/Data/Rent.csv')
+distance <- Rent$Miles2Campus
+monthly_cost <- Rent$Cost / 3
+residents <- Rent$Residents
+apartment <- Rent$Apartment
+gender <- Rent$Gender
+residents <- Rent$Residents
+costpermonth <- na.omit(data.frame(apartment, monthly_cost, residents, distance, gender))
+newdata <- sqldf('select apartment, monthly_cost, residents, distance from costpermonth where gender = "F" order by monthly_cost asc, residents desc, distance asc limit 10')
+(newdata)
+
+
+
+```
+
+## Interpretation
+#Cost Interpretation
+As we can see from the graph above, there are 4 apartment complexes that are below or at the $300 a month mark. They are (from least to greatest): Brooklyn Apartments at $290, Hill's College Ave Apts at $293.33, Davenport Apartments at $298.33 and finally Aspen Village - Women at exactly $300. This is especially good considering the mean of the whole range of data is $382.23. With the highest being Windsor Manor at $528.33 a month. 
+
+#Distance Interpretation
+In terms of distance, most of the apartments are actually really close to campus. There isn't a single apartment complex that is approved for single women that exceeds a mile. This means that unless Stephanie has to be right next to campus, the location might not be too big of a factor for her. The apartments with the shortest distance are 1)Allen's Sunrise Village - Women, 2)Birch Plaze, 3)Birch Wood I, 4)Carriage House, Kensington Manor - Women. All of these are below 0.07 miles which shouldn't be too significant in her decision factor as the change in distance between all of the five closest apartments is insignificant. 
+
+#Population Interpretation 
+It seems that most residents choose to live in the following five locations: 1) The Ivy (pop: 636), 2)Mountain Lofts - Women (pop: 590), 3)Northpoint - Women (pop: 548), 4)Centre-Square-Women (pop: 546), and 5) The Cedars - Women (pop: 444). After those 5, the total resident populatino begins to drop significantly. So these five would be the best bet for her to see many other stufents. 
+
+
+#Overall 
+The best apartment that I would recommend for her is Brooklyn Apartments. This is below her $300 apartment requirement and also it is less than half of a mile away from campus and has 144 residents. This would allow her to stay close to campus, make new friends, and also pay less than $300 a month!
+
+
+
+
+
+
+
+
+
+
+[^1]: Note that Stephanie is a fictional character who is based on real experiences of many faculty and staff here at BYU-Idaho.

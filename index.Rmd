@@ -1,0 +1,189 @@
+---
+title: "Table of Contents"
+output: 
+  html_document:
+    theme: cerulean
+---
+
+<br>
+
+----
+[Cool Colors](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantY.png" width=35px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**1 Quantitative Variable**
+
+
+For example, you might:
+
+* write a quick note to tell yourself that the image on the left represents "height" or "weight" data. 
+
+* You may include a link to [dot plots](GraphicalSummaries.html#dot-plots), [histograms](GraphicalSummaries.html#histograms), or [standard deviation](NumericalSummaries.html#standard-deviation). 
+
+* Or, you might <span style="background-color:yellow;">highlight some text</span> to show its importance, or just <span style="color:green;">change the text color</span> or <span style="font-size:2em;">text size</span> or even <span style="background-color:yellow;color:green;font-size:1.3em;">all three</span>.
+
+
+If you want to learn more about customizing this table of contents, see the "R Help -> R Markdown Hints" page of your Math 325 Notebook.
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantYQualXg2.png" width=59px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**1 Quantitative Variable | 2 Groups**
+
+Represents two columns that you are looking at such as height and weight and this would allow you would compare.
+
+Y what we are interested in and X is how we try to find Y. 
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantYQualXg3plus.png" width=59px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**1 Quantitative Variable | 3+ Groups**
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantYQuantX.png" width=59px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**2 Quantitative Variables**
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QuantYMultX.png" width=110px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**1 Quantitative Response | Multiple Explanatory Variables**
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/BinomYQuantX.png" width=59px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**Binomial Response | 1 Explanatory Variable**
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/BinomYMultX.png" width=110px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**Binomial Response | Multiple Explanatory Variables**
+
+
+
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<div style="float:left;width:125px;" align=center>
+<img src="./Images/QualYQualX.png" width=59px;>
+</div>
+<div style="padding-left:125px;">
+<!-- Add your customizations in the area below: -->
+
+**2 Qualitative Variables**
+
+
+You use a bar chart. 
+
+ex: Are men or women more likely to get an A in the class?
+
+
+
+
+<!------------------------------------------------>
+</div>
+<div style="clear:both;"></div>
+
+----
+
+<footer></footer>
+

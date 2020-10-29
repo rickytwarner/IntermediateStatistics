@@ -1,0 +1,35 @@
+---
+title: "Housing Response"
+author: "Me"
+date: "4/25/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Student Housing Costs
+
+In response to Stephanie's freshman dilemma, the following research has been proposed. All student housing (that is approved for women) has had it's price, location, and amount of people analyzed to see which option would be the best for Stephanie.
+
+An important note is that for this project, there were two main packages used. The first is the default R graphing package ggplot. This is a beautiful graphing package that lets us visualize data in a variety of ways. The second is sqldf. Sqldf is a program that converts sql "syntax" into code understood by R. This makes aggregation as well as organizing data a lot easier. 
+
+
+##cost 
+```{r, echo = FALSE}
+library('sqldf')
+Rent = read.csv('/Users/ricky/Desktop/Math\ 325\ Notebook/Data/Rent.csv')
+three <- Rent$Cost / 3
+apartment <- Rent$Apartment
+gender <- Rent$Gender
+costpermonth <- data.frame(apartment, three, gender)
+newdata <- sqldf('select apartment, three from costpermonth where gender = "F" order by three asc')
+
+hist(newdata$three,main = "Monthly Costs for Women's Housing in Rexburg ", xlab="Price Range", ylab="Number of Apartments in Range", col = 'steelblue')
+```
+
+
+
+#Cost Analysis
+As we can see from the graph above, there are 4 apartment complexes that are below or at the $300 a month mark. They are (from least to greatest): Brooklyn Apartments at $290, Hill's College Ave Apts at $293.33, Davenport Apartments at $298.33 and finally Aspen Village - Women at exactly $300. 

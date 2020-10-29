@@ -1,0 +1,30 @@
+---
+title: "Extra Resources"
+author: "Ricky Warner"
+date: "5/30/2018"
+output: html_document
+---
+Link: 
+Website for most cheat sheets 
+##https://www.rstudio.com/resources/cheatsheets/
+
+Good website for overall pracitce in R. 
+##https://www.datacamp.com/home
+
+Review tidyverse
+##https://www.datacamp.com/community/tutorials/tidyverse-tutorial-r
+
+Learn python from R background.
+##https://www.hackerearth.com/blog/machine-learning/how-can-r-users-start-learning-python-for-data-science/
+
+Machine Learning in R 
+##https://www.datacamp.com/community/tutorials/machine-learning-in-r
+
+ggplot2 website 
+##http://ggplot.yhathq.com/how-it-works.html
+
+Build websites with Shiny 
+##https://shiny.rstudio.com/
+
+
+
